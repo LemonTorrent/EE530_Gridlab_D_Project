@@ -1,0 +1,11 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# VS Code local settings
+.vscode/
