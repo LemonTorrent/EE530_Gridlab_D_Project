@@ -7,5 +7,8 @@
 __pycache__/
 *.py[cod]
 
+# Python virtual environment
+.venv/
+
 # VS Code local settings
 .vscode/
