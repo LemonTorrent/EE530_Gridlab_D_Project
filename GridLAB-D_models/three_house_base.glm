@@ -112,7 +112,7 @@ object triplex_load {
     power_pf_12     0.95;
     object player {
         property base_power_12;
-        file "house_1_load.player";
+        file "GridLAB-D_models/house_1_load.player";
     };
 }
 
@@ -134,7 +134,7 @@ object house {
         temperature 120.0;
         object player {
             property water_demand;
-            file "house_1_water.player";
+            file "GridLAB-D_models/house_1_water.player";
         };
     };
 }
@@ -170,7 +170,7 @@ object triplex_load {
     power_pf_12     0.95;
     object player {
         property base_power_12;
-        file "house_2_load.player";
+        file "GridLAB-D_models/house_2_load.player";
     };
 }
 
@@ -192,7 +192,7 @@ object house {
         temperature 120.0;
         object player {
             property water_demand;
-            file "house_2_water.player";
+            file "GridLAB-D_models/house_2_water.player";
         };
     };
 }
@@ -228,7 +228,7 @@ object triplex_load {
     power_pf_12     0.95;
     object player {
         property base_power_12;
-        file "house_3_load.player";
+        file "GridLAB-D_models/house_3_load.player";
     };
 }
 
@@ -250,7 +250,7 @@ object house {
         temperature 120.0;
         object player {
             property water_demand;
-            file "house_3_water.player";
+            file "GridLAB-D_models/house_3_water.player";
         };
     };
 }
@@ -260,28 +260,28 @@ object house {
 // ==========================================
 object recorder {
     parent shared_xfmr;
-    property power_in.real,power_in.imag,current_in_A.mag;
+    property power_in.real,power_in.imag,current_in_A;
     interval 60;
     file "out_${CASE_NAME}_${XFMR_KVA}kVA_xfmr.csv";
 }
 
 object recorder {
     parent meter_h1;
-    property measured_real_power,measured_reactive_power,voltage_12.mag,measured_current_1.mag;
+    property measured_real_power,measured_reactive_power,measured_avg_voltage_12_mag_in_interval,measured_current_1;
     interval 60;
     file "out_${CASE_NAME}_${XFMR_KVA}kVA_m1.csv";
 }
 
 object recorder {
     parent meter_h2;
-    property measured_real_power,measured_reactive_power,voltage_12.mag,measured_current_1.mag;
+    property measured_real_power,measured_reactive_power,measured_avg_voltage_12_mag_in_interval,measured_current_1;
     interval 60;
     file "out_${CASE_NAME}_${XFMR_KVA}kVA_m2.csv";
 }
 
 object recorder {
     parent meter_h3;
-    property measured_real_power,measured_reactive_power,voltage_12.mag,measured_current_1.mag;
+    property measured_real_power,measured_reactive_power,measured_avg_voltage_12_mag_in_interval,measured_current_1;
     interval 60;
     file "out_${CASE_NAME}_${XFMR_KVA}kVA_m3.csv";
 }
