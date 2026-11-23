@@ -20,11 +20,4 @@ for idx, h in enumerate(SELECTED_HOUSES, start=1):
     # GridLAB-D player format: no header, comma-separated
     player_df.to_csv(PLAYER_DIR / f"house_{idx}_load.player", index=False, header=False)
 
-    # Placeholder zero-draw water player (replace with your course gpm profiles)
-    wh_df = pd.DataFrame({
-        "Time": df["Time"],
-        "Value": 0.0
-    })
-    wh_df.to_csv(PLAYER_DIR / f"house_{idx}_water.player", index=False, header=False)
-
 print("Player files generated successfully.")
