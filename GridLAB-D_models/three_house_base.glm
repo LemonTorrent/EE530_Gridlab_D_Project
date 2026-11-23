@@ -36,7 +36,7 @@ module powerflow {
 object node {
     name primary_source;
     bustype SWING;
-    phases AS;
+    phases AN;
     nominal_voltage 7200;
 }
 
