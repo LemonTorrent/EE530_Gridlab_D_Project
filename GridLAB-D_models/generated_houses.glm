@@ -1,0 +1,209 @@
+// HOUSE 1
+object triplex_line {
+    name line_h1;
+    phases CS;
+    from xfmr_secondary;
+    to meter_h1;
+    length 50 ft;
+    configuration tp_line_config;
+}
+
+object triplex_meter {
+    name meter_h1;
+    phases CS;
+    nominal_voltage 120;
+}
+
+object triplex_load {
+    name load_h1;
+    parent meter_h1;
+    phases CS;
+    nominal_voltage 120;
+    impedance_fraction_12 ${Z_FRAC};
+    current_fraction_12   ${I_FRAC};
+    power_fraction_12     ${P_FRAC};
+    impedance_pf_12 0.95;
+    current_pf_12   0.95;
+    power_pf_12     0.95;
+    object player {
+        property base_power_12;
+        file "GridLAB-D_models/house_1_load.player";
+    };
+}
+
+object house {
+    name house_host_1;
+    parent meter_h1;
+    heating_system_type NONE;
+    cooling_system_type NONE;
+    auxiliary_system_type NONE;
+    object waterheater {
+        name wh_1;
+        location INSIDE;
+        tank_volume 50.0;
+        tank_setpoint 120.0;
+        thermostat_deadband 2.0;
+        heating_element_capacity 4.5 kW;
+        inlet_water_temperature 60.0;
+        tank_UA 3.3;
+        temperature 120.0;
+        object player {
+            property water_demand;
+            file "data/water_draw/water_draw.csv";
+        };
+    };
+}
+
+object recorder {
+    parent meter_h1;
+    property measured_real_power,measured_reactive_power,measured_voltage_1,measured_voltage_2,measured_current_1;
+    interval 60;
+    file "out_${CASE_NAME}_${XFMR_KVA}kVA_m1.csv";
+}
+
+object recorder {
+    parent wh_1;
+    property actual_power,temperature,water_demand;
+    interval 60;
+    file "out_${CASE_NAME}_${XFMR_KVA}kVA_wh1.csv";
+}
+
+// HOUSE 2
+object triplex_line {
+    name line_h2;
+    phases CS;
+    from xfmr_secondary;
+    to meter_h2;
+    length 50 ft;
+    configuration tp_line_config;
+}
+
+object triplex_meter {
+    name meter_h2;
+    phases CS;
+    nominal_voltage 120;
+}
+
+object triplex_load {
+    name load_h2;
+    parent meter_h2;
+    phases CS;
+    nominal_voltage 120;
+    impedance_fraction_12 ${Z_FRAC};
+    current_fraction_12   ${I_FRAC};
+    power_fraction_12     ${P_FRAC};
+    impedance_pf_12 0.95;
+    current_pf_12   0.95;
+    power_pf_12     0.95;
+    object player {
+        property base_power_12;
+        file "GridLAB-D_models/house_2_load.player";
+    };
+}
+
+object house {
+    name house_host_2;
+    parent meter_h2;
+    heating_system_type NONE;
+    cooling_system_type NONE;
+    auxiliary_system_type NONE;
+    object waterheater {
+        name wh_2;
+        location INSIDE;
+        tank_volume 50.0;
+        tank_setpoint 120.0;
+        thermostat_deadband 2.0;
+        heating_element_capacity 4.5 kW;
+        inlet_water_temperature 60.0;
+        tank_UA 3.3;
+        temperature 120.0;
+        object player {
+            property water_demand;
+            file "data/water_draw/water_draw.csv";
+        };
+    };
+}
+
+object recorder {
+    parent meter_h2;
+    property measured_real_power,measured_reactive_power,measured_voltage_1,measured_voltage_2,measured_current_1;
+    interval 60;
+    file "out_${CASE_NAME}_${XFMR_KVA}kVA_m2.csv";
+}
+
+object recorder {
+    parent wh_2;
+    property actual_power,temperature,water_demand;
+    interval 60;
+    file "out_${CASE_NAME}_${XFMR_KVA}kVA_wh2.csv";
+}
+
+// HOUSE 5
+object triplex_line {
+    name line_h5;
+    phases CS;
+    from xfmr_secondary;
+    to meter_h5;
+    length 50 ft;
+    configuration tp_line_config;
+}
+
+object triplex_meter {
+    name meter_h5;
+    phases CS;
+    nominal_voltage 120;
+}
+
+object triplex_load {
+    name load_h5;
+    parent meter_h5;
+    phases CS;
+    nominal_voltage 120;
+    impedance_fraction_12 ${Z_FRAC};
+    current_fraction_12   ${I_FRAC};
+    power_fraction_12     ${P_FRAC};
+    impedance_pf_12 0.95;
+    current_pf_12   0.95;
+    power_pf_12     0.95;
+    object player {
+        property base_power_12;
+        file "GridLAB-D_models/house_5_load.player";
+    };
+}
+
+object house {
+    name house_host_5;
+    parent meter_h5;
+    heating_system_type NONE;
+    cooling_system_type NONE;
+    auxiliary_system_type NONE;
+    object waterheater {
+        name wh_5;
+        location INSIDE;
+        tank_volume 50.0;
+        tank_setpoint 120.0;
+        thermostat_deadband 2.0;
+        heating_element_capacity 4.5 kW;
+        inlet_water_temperature 60.0;
+        tank_UA 3.3;
+        temperature 120.0;
+        object player {
+            property water_demand;
+            file "data/water_draw/water_draw.csv";
+        };
+    };
+}
+
+object recorder {
+    parent meter_h5;
+    property measured_real_power,measured_reactive_power,measured_voltage_1,measured_voltage_2,measured_current_1;
+    interval 60;
+    file "out_${CASE_NAME}_${XFMR_KVA}kVA_m5.csv";
+}
+
+object recorder {
+    parent wh_5;
+    property actual_power,temperature,water_demand;
+    interval 60;
+    file "out_${CASE_NAME}_${XFMR_KVA}kVA_wh5.csv";
+}

@@ -4,7 +4,7 @@ from pathlib import Path
 import pandas as pd
 
 PF = 0.95
-SELECTED_HOUSES = (1, 2, 3)
+SELECTED_HOUSES = (1, 2, 5)
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 PROFILE_DIR = PROJECT_ROOT / "data" / "household_profiles"
 PLAYER_DIR = PROJECT_ROOT / "GridLAB-D_models"
