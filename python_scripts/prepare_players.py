@@ -86,7 +86,7 @@ object house {{
         thermostat_deadband 2.0;
         heating_element_capacity 4.5 kW;
         inlet_water_temperature 60.0;
-        tank_UA 3.0;
+        tank_UA 3.3;
         temperature 120.0;
         object player {{
             property water_demand;
