@@ -4,21 +4,21 @@ from pathlib import Path
 import pandas as pd
 
 PF = 0.95
+SELECTED_HOUSES = (1, 2, 3)
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 PROFILE_DIR = PROJECT_ROOT / "data" / "household_profiles"
 PLAYER_DIR = PROJECT_ROOT / "GridLAB-D_models"
 MODEL_FRAGMENT = PLAYER_DIR / "generated_houses.glm"
 PROFILE_NAME = re.compile(r"house_profile_(\d+)\.csv")
 
-profiles = []
-for profile_path in PROFILE_DIR.glob("house_profile_*.csv"):
-    match = PROFILE_NAME.fullmatch(profile_path.name)
-    if match is not None:
-        profiles.append((int(match.group(1)), profile_path))
-
-profiles.sort(key=lambda profile: profile[0])
-if not profiles:
-    raise FileNotFoundError(f"No house_profile_<number>.csv files found in {PROFILE_DIR}")
+profiles = [
+    (house_number, PROFILE_DIR / f"house_profile_{house_number}.csv")
+    for house_number in SELECTED_HOUSES
+]
+missing_profiles = [path for _, path in profiles if not path.is_file()]
+if missing_profiles:
+    missing_names = ", ".join(path.name for path in missing_profiles)
+    raise FileNotFoundError(f"Required household profile(s) not found in {PROFILE_DIR}: {missing_names}")
 
 house_objects = []
 for house_number, profile_path in profiles:
@@ -110,4 +110,4 @@ object recorder {{
 }}""")
 
 MODEL_FRAGMENT.write_text("\n\n".join(house_objects) + "\n", encoding="utf-8")
-print(f"Generated load players and model objects for {len(profiles)} profiles.")
+print(f"Generated load players and model objects for {len(profiles)} houses.")
