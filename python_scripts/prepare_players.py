@@ -42,7 +42,7 @@ for house_number, profile_path in profiles:
     house_objects.append(f"""// HOUSE {house_number}
 object triplex_line {{
     name line_h{house_number};
-    phases AS;
+    phases CS;
     from xfmr_secondary;
     to meter_h{house_number};
     length 50 ft;
@@ -51,14 +51,14 @@ object triplex_line {{
 
 object triplex_meter {{
     name meter_h{house_number};
-    phases AS;
+    phases CS;
     nominal_voltage 120;
 }}
 
 object triplex_load {{
     name load_h{house_number};
     parent meter_h{house_number};
-    phases AS;
+    phases CS;
     nominal_voltage 120;
     impedance_fraction_12 ${{Z_FRAC}};
     current_fraction_12   ${{I_FRAC}};
