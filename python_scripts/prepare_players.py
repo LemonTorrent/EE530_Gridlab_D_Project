@@ -4,7 +4,7 @@ from pathlib import Path
 import pandas as pd
 
 PF = 0.95
-SELECTED_HOUSES = (1, 2, 3)
+SELECTED_HOUSES = (1, 2, 5)
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 PROFILE_DIR = PROJECT_ROOT / "data" / "household_profiles"
 PLAYER_DIR = PROJECT_ROOT / "GridLAB-D_models"
@@ -86,7 +86,7 @@ object house {{
         thermostat_deadband 2.0;
         heating_element_capacity 4.5 kW;
         inlet_water_temperature 60.0;
-        tank_UA 3.0;
+        tank_UA 3.3;
         temperature 120.0;
         object player {{
             property water_demand;
